@@ -1,0 +1,6 @@
+2025-08-08 19:11:18 [restartedMain] INFO  r.n.s.ServiceMoneyTransferApplication - Starting ServiceMoneyTransferApplication using Java 21.0.7 with PID 208 (C:\Users\CTACOB\IdeaProjects\ServiceMoneyTransfer\target\classes started by CTACOB in C:\Users\CTACOB\IdeaProjects\ServiceMoneyTransfer)
+2025-08-08 19:11:18 [restartedMain] DEBUG r.n.s.ServiceMoneyTransferApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-08 19:11:18 [restartedMain] INFO  r.n.s.ServiceMoneyTransferApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 19:11:18 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-08 19:11:18 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-08 19:11:18 [restartedMain] INFO  o.s.b.d.c.l.DockerComposeLifecycleManager - Using Docker Compose file C:\Users\CTACOB\IdeaProjects\ServiceMoneyTransfer\compose.yaml

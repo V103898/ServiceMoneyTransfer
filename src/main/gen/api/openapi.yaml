@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  description: Transfer Money API
+  title: Transfer Money API
+  version: 1.0.0
+servers:
+- description: local server
+  url: http://localhost:8080/transfer
+paths:
+  /transfer:
+    post:
+      description: Call to send money between cards
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_transfer_post_request'
+        description: Card from and card to
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_transfer_post_200_response'
+          description: Success transfer
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_transfer_post_400_response'
+          description: Error input data
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_transfer_post_400_response'
+          description: Error transfer
+      summary: Transfer money card to card
+      x-content-type: application/json
+      x-accepts: application/json
+  /confirmOperation:
+    post:
+      description: Confirming operataion with code
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_confirmOperation_post_request'
+        description: Confirm operation
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_transfer_post_200_response'
+          description: Success confirmation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_transfer_post_400_response'
+          description: Error input data
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_transfer_post_400_response'
+          description: Error confirmation
+      summary: Confirm operation
+      x-content-type: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    _transfer_post_request_amount:
+      properties:
+        value:
+          type: integer
+        currency:
+          type: string
+      type: object
+    _transfer_post_request:
+      properties:
+        cardFromNumber:
+          type: string
+        cardFromValidTill:
+          type: string
+        cardFromCVV:
+          type: string
+        cardToNumber:
+          type: string
+        amount:
+          $ref: '#/components/schemas/_transfer_post_request_amount'
+      type: object
+    _transfer_post_200_response:
+      example:
+        operationId: operationId
+      properties:
+        operationId:
+          description: Operation id
+          type: string
+      type: object
+    _transfer_post_400_response:
+      properties:
+        message:
+          description: Error customer message
+          type: string
+        id:
+          type: integer
+      type: object
+    _confirmOperation_post_request:
+      properties:
+        operationId:
+          description: Operation id
+          type: string
+        code:
+          description: Verification code
+          type: string
+      type: object
+

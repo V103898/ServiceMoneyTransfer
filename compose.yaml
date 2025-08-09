@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  transfer-service:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./transfer.log:/transfer.log
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+
+  frontend:
+    image: node:14
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front:/app
+    command: npm start
+    depends_on:
+      - transfer-service
